@@ -1,0 +1,190 @@
+﻿@model List< OnlineShoppingSystem.Models.DTOOnlineShopping.SellerAddressDTO>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "SellerAdress";
+}
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.js"></script>
+
+<script type="text/javascript">
+    debugger;
+       function EditAddree(Id) {
+            var country = $("#dllCountry").val();
+           var city = $("#dllcity").val();
+           var sellerid = $("#Sellerid").val();
+           var objAddress = { 'CountryId': country, 'CityId': city, 'SellerId': sellerid};
+
+            debugger;
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Action("EditSellerProfile/id", "SellerAddress")'.replace("id",Id),
+                data: { obj: objAddress },
+                success: function (data) {
+                    debugger;
+
+                },
+                error: function () {
+                    debugger;
+
+                }
+
+            });
+        };
+    debugger;
+    $(document).ready(function () {
+        debugger;
+        $.ajax({
+            type: 'get',
+            url: '/SellerAddress/Country',
+            data: 'json',
+            success: function (data) {
+
+                $.each(data, function (key, value) {
+                    $("#dllCountry").append('<option value="' + value.id + '">' + value.name + '</option>');
+                })
+            },
+            error: '{}'
+        });
+        debugger;
+        $("#dllCountry").change(function () {
+            $("#dllcity").empty();
+            var countryid = $("#dllCountry").val();
+            debugger;
+            $.ajax({
+                type: 'get',
+                url: '/SellerAddress/Cities?id=' + countryid,
+                contentType: 'applcation/Json',
+                dataType: 'Json',
+                data: '{}',
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        $("#dllcity").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    })
+                },
+                error: '{}'
+            });
+        });
+        debugger;
+        $("#btnAdd").click(function () {
+            var country = $("#dllCountry").val();
+            var city = $("#dllcity").val();
+
+            var objAddress = { 'CountryId': country, 'CityId': city };
+            debugger;
+            $.ajax({
+                type: 'Post',
+                url: "/SellerAddress/Selleradress",
+                data: { model:objAddress},
+                success: function (data) {
+                    debugger;
+
+                },
+                error: function () {
+                    debugger;
+
+                }
+
+            });
+        });
+
+     
+    });
+
+</script>
+
+
+
+
+<h2>Seller Adress</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<br />
+<br />
+<form asp-action="Selleradress" asp-controller="SellerAddress" method="post">
+    <div class="form-group">
+        <div class="row">
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-10">
+                        <input hidden value="@item.SellerId" id="Sellerid"/>
+                        <select asp-for="@item.CountryId" class="form-control" id="dllCountry" style="width: 181px"><option value="">--Select Country--</option></select>
+
+                        <select asp-for="@item.CityId" class="form-control" id="dllcity" style="width: 181px; margin-left: 186px;margin-top: -37px"><option value="">--Select City--</option></select>
+
+                        <input type="button"  id="btnAdd" value="Add" class="btn btn-info" style="margin-left: 369px; margin-top: -66px" />
+
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+
+
+
+
+    @*</form>*@
+    <br />
+    <br />
+
+
+
+
+
+    <table class="table table-bordered table-striped table-hover" style="background-color:white">
+        <thead>
+            <tr>
+
+                <th>
+                    Country:
+                </th>
+                <th>
+                   City:
+                </th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    @foreach (var item2 in item.ListOfAddress)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.Country.Name, new { @class = "custom-select", @Name = "dllCountry", @Id = "dllCountry" })
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item2.City.Name, new { @class = "custom-select", @Name = "dllCity", @Id = "dllCity" })
+                            </td>
+
+                            <td>
+                               
+                                <button onclick="EditAddree(@item2.Id)" class="btn btn-primary">Edit</button>
+                                <button asp-action="DeleteSellerAddress" asp-route-id="@item2.Id" type="submit" class="btn btn-danger">Delete</button>
+                                @*</form>*@
+
+                            </td>
+
+                        </tr>
+                    }
+
+                }
+            }
+
+        </tbody>
+    </table>
+
+</form>
+
+
+

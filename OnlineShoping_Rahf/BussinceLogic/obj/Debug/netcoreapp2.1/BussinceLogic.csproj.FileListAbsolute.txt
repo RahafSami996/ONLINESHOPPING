@@ -1,0 +1,16 @@
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\BussinceLogic.deps.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\BussinceLogic.runtimeconfig.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\BussinceLogic.runtimeconfig.dev.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\BussinceLogic.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\BussinceLogic.pdb
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\DataAcsses.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\DataAcsses.pdb
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.csprojAssemblyReference.cache
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.csproj.CoreCompileInputs.cache
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.AssemblyInfoInputs.cache
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.AssemblyInfo.cs
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.csproj.CopyComplete
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\obj\Debug\netcoreapp2.1\BussinceLogic.pdb
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\BussinceLogic\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Hosting.xml

@@ -1,0 +1,93 @@
+﻿@*@model OnlineShoppingSystem.Models.DTOOnlineShopping.ColorSizeDTO
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ColorSizeProduct";
+}
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.js"></script>
+
+<script>
+   
+</script>
+
+<h2>Color Size Product</h2>
+<p>
+    <a asp-action="CreateProduct" class="btn btn-primary">Create New</a>
+</p>
+<br />
+<br />
+<form asp-action="ColorSizeProduct" asp-controller="Product" method="post">
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="QuantityProduct" style="margin-left: 20px"></label>
+            <input type="text" asp-for="QuantityProduct" readonly id="txtquantityprod" class="form-control col-lg-1" style="margin-left: 99px" />
+            <div class="col-md-10">
+                <input type="text" asp-for="Quantity" placeholder="Quantity" class="form-control" style="width:auto" id="txtquantity"/>
+                <select asp-for="Color" class="form-control" id="txtcolor" asp-items="@(new SelectList(@ViewBag.Allcolr,"Id","ColorName"))" style="width:auto;margin-left: 205px;
+                    margin-top: -37px">
+                    <option value="">--Select color--</option>
+                </select>
+
+                <select asp-for="Size" class="form-control" id="txtsize" asp-items="@(new SelectList(@ViewBag.AllSize,"Id","SizeNumber"))" style="width:auto;margin-left: 360px;
+                    margin-top: -38px">
+                    <option value="">--Select Size--</option>
+                </select>
+
+                <input type="submit" value="Add" id="txtadd" class="btn btn-info" style="margin-left: 600px;
+                    margin-top: -61px" />
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <table class="table table-bordered table-striped table-hover" style="color:darkviolet" id="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListColorSize)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quentity, new { @class = "custom-select" })
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size.SizeNumber, new { @class = "custom-select" })
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color.ColorName, new { @class = "custom-select" })
+                    </td>
+
+                    <td>
+
+                            <button asp-action="EditSellerProfile" asp-controller="SellerAddress"
+                                    asp-route-obj=@Model asp-route-UserId="@item.Id" class="btn btn-primary">
+                                Edit
+                            </button>
+                            <button asp-action="DeleteColorSize" asp-controller="Product" asp-route-Id="@item.Id" asp-route-ProductId="@item.ProductId" type="submit" class="btn btn-danger">Delete</button>
+
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+   </form>*@

@@ -1,0 +1,126 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OnlineShoppingSystem.Models
+@inject SignInManager<User> signInManager;
+
+
+<!DOCTYPE html>
+<style>
+
+html, body { background-image: url('https://image.jimcdn.com/app/cms/image/transf/none/path/s259b61c8b4c738bf/backgroundarea/i28cc1a6a8afff398/version/1550502997/image.jpg'); 
+             font-family: 'Numans', sans-serif;
+
+}
+    
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" style="color:hotpink" href="#">Rahaf Shoop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="AllProduct" asp-controller="Product">Home <span class="sr-only">(current)</span></a>
+                </li>
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Seller"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="CreateProduct" asp-controller="Product">Create Prodect</a>
+                    </li>
+                }
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="ListProduct" asp-controller="Product">Ptoduct List</a>
+                </li>
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="ListUser" asp-controller="Administration">User List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="ListRole" asp-controller="Administration">Role List</a>
+                    </li>
+                }
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="UserPrpfile" asp-controller="UserProfile">User Profile</a>
+                    </li>
+                }
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="UserProfile" asp-controller="UserProfile">User Profile</a>
+                    </li>
+                }
+
+
+
+                @*<li class="nav-item">
+            <a class="nav-link" asp-action="Selleradress" asp-controller="SellerAddress">Seller</a>
+        </li>*@
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Seller"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Selleradress" asp-controller="SellerAddress">Seller Address</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="ListProfileSeller" asp-controller="SellerProfile">Seller Profile</a>
+                    </li>
+                }
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="CartProduct" asp-controller="Product">Basket</a>
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <form method="post" asp-action="Logout" asp-controller="Login">
+                            <button type="submit" class="nav-link btn btn-link py-0" style="width:auto;margin-left: 600px">
+                                Logout @User.Identity.Name
+                            </button>
+
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a asp-action="Register" asp-controller="Login" class="nav-link">Register</a>
+                    </li>
+
+                    @*<li class="nav-item">
+                            <a asp-action="SignIn" asp-controller="Login" class="nav-link">Login</a>
+                        </li>*@
+                }
+
+            </ul>
+            @*<form class="form-inline my-2 my-lg-0" asp-action="Search" asp-controller="Book">
+                <input class="form-control mr-sm-2" name="term" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>*@
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+
+    }
+</body>
+</html>
+

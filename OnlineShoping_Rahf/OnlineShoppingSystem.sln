@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShoppingSystem", "OnlineShoppingSystem\OnlineShoppingSystem.csproj", "{DE2759E8-CD0D-4443-8EAA-333746F682F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinceLogic", "BussinceLogic\BussinceLogic.csproj", "{54EF5F5B-B3C4-40D4-B231-795CE4BA6268}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAcsses", "DataAcsses\DataAcsses.csproj", "{86338BF5-4FCC-446A-8367-1433311A83F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE2759E8-CD0D-4443-8EAA-333746F682F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2759E8-CD0D-4443-8EAA-333746F682F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2759E8-CD0D-4443-8EAA-333746F682F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2759E8-CD0D-4443-8EAA-333746F682F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54EF5F5B-B3C4-40D4-B231-795CE4BA6268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54EF5F5B-B3C4-40D4-B231-795CE4BA6268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54EF5F5B-B3C4-40D4-B231-795CE4BA6268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54EF5F5B-B3C4-40D4-B231-795CE4BA6268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86338BF5-4FCC-446A-8367-1433311A83F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86338BF5-4FCC-446A-8367-1433311A83F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86338BF5-4FCC-446A-8367-1433311A83F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86338BF5-4FCC-446A-8367-1433311A83F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {274911A6-1FDA-4B21-A455-0CF5EF55AC6D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://blessedtreeit.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OnlineShoppingSystem\\OnlineShoppingSystem.csproj
+		SccProjectName1 = OnlineShoppingSystem
+		SccLocalPath1 = OnlineShoppingSystem
+		SccProjectUniqueName2 = BussinceLogic\\BussinceLogic.csproj
+		SccProjectName2 = BussinceLogic
+		SccLocalPath2 = BussinceLogic
+		SccProjectUniqueName3 = DataAcsses\\DataAcsses.csproj
+		SccProjectName3 = DataAcsses
+		SccLocalPath3 = DataAcsses
+	EndGlobalSection
+EndGlobal

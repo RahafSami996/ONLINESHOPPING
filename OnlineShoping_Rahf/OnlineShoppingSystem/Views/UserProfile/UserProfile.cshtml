@@ -1,0 +1,62 @@
+﻿@model OnlineShoppingSystem.Models.DTOOnlineShopping.EditProfileSellerDTO
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Seller Profile";
+}
+
+<h1 style="text-align: center">User Profile</h1>
+
+<div class="card mb-3">
+    @*<div class="card-header">
+        userId:@Model.Id
+    </div>*@
+    @if (Model.Image != null)
+    {
+        <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Image)" width="150" height="100" />
+
+    }
+
+</div>
+<div class="card-body">
+    User Name:   <h5 class="card-title" style="margin-left: 100px;margin-top: -22px">@Model.UserName</h5>
+    <br />
+    Phone:   <h5 class="card-title" style="margin-left: 100px;margin-top: -22px">@Model.phone</h5>
+    <br />
+    Email:   <h5 class="card-title" style="margin-left: 100px;margin-top: -22px">@Model.Email</h5>
+</div>
+<div class="card-footer">
+    <a asp-action="EditProfileUser" asp-controller="UserProfile"
+       asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+
+</div>
+<br />
+<br />
+<h1 style="text-align: center">Information Card Payment</h1>
+<div class="card-body">
+    @if (Model.CardPayment != null)
+    {
+        @foreach (var item in Model.CardPayment)
+        {
+            <div class="form-group">
+                Expire Date: <h5 class="card-title" style="margin-left: 100px;margin-top: -22px">@item.ExpireDate</h5>
+                Total Credit Amount:<h5 class="card-title" style="margin-left: 155px;margin-top: -22px">@item.TotalCreditAmount</h5>
+                Availabel Credit:<h5 class="card-title" style="margin-left: 155px;margin-top: -22px">@item.AvailableCredit</h5>
+                Celling Of Order:<h5 class="card-title" style="margin-left: 155px;margin-top: -22px">@item.CellingOfOrder</h5>
+            </div>
+
+            <div class="card-footer">
+                <a asp-action="EditCardPayment" asp-controller="UserProfile"
+                   asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="DeleteCard" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+
+
+            </div>
+
+        }
+    }
+
+</div>
+
+

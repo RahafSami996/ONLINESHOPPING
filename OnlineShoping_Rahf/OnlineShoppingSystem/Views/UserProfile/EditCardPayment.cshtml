@@ -1,0 +1,60 @@
+﻿@model OnlineShoppingSystem.Models.DTOOnlineShopping.PaymentCardDTO
+
+@{
+    ViewData["Title"] = "PaymentCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Card Payment</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCardPayment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="ExpireDate" class="control-label"></label>
+                <input asp-for="ExpireDate" class="form-control" />
+                <span asp-validation-for="ExpireDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="@(new SelectList(Model.ListStatus,"Id","Name"))"><option>--Select One--</option></select>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="TotalCreditAmmount" class="control-label"></label>
+                <input asp-for="TotalCreditAmmount" class="form-control" />
+                <span asp-validation-for="TotalCreditAmmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableCredit" class="control-label"></label>
+                <input asp-for="AvailableCredit" class="form-control" />
+                <span asp-validation-for="AvailableCredit" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="CellingOfOrder" class="control-label"></label>
+                <input asp-for="CellingOfOrder" class="form-control" />
+                <span asp-validation-for="CellingOfOrder" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="UserID" class="control-label"></label>
+                    <select asp-for="UserID" class ="form-control" asp-items="ViewBag.UserID"></select>
+                </div>*@
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-action="UserProfile" class="btn btn-info">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+

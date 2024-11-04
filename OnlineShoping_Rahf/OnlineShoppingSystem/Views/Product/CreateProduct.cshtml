@@ -1,0 +1,296 @@
+﻿@model OnlineShoppingSystem.Models.DTOOnlineShopping.ProductDTO
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "CreateProduct";
+}
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.js"></script>
+
+<script type="text/javascript">
+
+
+    //$(function () {
+    //    $("#deleteitem").click(function () {
+    //        alert("Deleted");
+    //        $(this).closest("tr").remove();
+    //        return false;
+    //    })
+    //});
+
+
+    $(document).ready(function () {
+        $('.custom-file-input').on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).next('.custom-file-label').html(fileName);
+        });
+
+        $("#txtadd").click(function () {
+            debugger;
+            var quantity = $("#txtquantity").val();
+            var color = $("#txtcolor").val();
+            var size = $("#txtsize").val();
+
+            var row = {};
+            row.Color = color;
+            row.Size = size;
+            row.Quantity = quantity;
+
+            $('#table').append('<tr class="trrows" data-value="' + row.Color + "-" + row.Size + '"><td class="color" data-color="' + row.Color + '">' + $('#txtcolor :selected').text() + '</td><td class="size" data-size="' + row.Size + '">' + $('#txtsize :selected').text() + '</td><td class="quantity" data-quantity="' + row.Quantity + '">' + quantity + '</td><td>' +
+                '<a class="btn btn-sm btn-primary" id="btn-edit-item" title="Edit" >' + 'Edit' + '</a>' + '<a title="Delete" class="btn btn-sm btn-danger btn-delete-item" style="margin-left: 5px;">' + 'Delete' + '</a></td></tr>'
+            );
+            //}
+
+        });
+
+        debugger;
+        $("#createbtn").click(function () {
+            debugger;
+            var Name = $("#ProductName").val();
+            var Quantity = $("#quantity").val();
+            var price = $("#pricetxt").val();
+            var code = $("#Codetxt").val();
+            var season = $("#seasontxt").val();
+            var type = $("#typetxt").val();
+            var file = document.getElementById("logoFile").files[0];
+
+           
+            var tr = $("#table tr.trrows"); console.log(tr);
+            var ListColorSize = [];
+            tr.each(function () {
+                var tr1 = $(this);
+                var color_id = tr1.find(".color").attr("data-color");
+                var size_id = tr1.find(".size").attr("data-size");
+                var quantity = tr1.find(".quantity").attr("data-quantity");
+                var item = {};
+                item.ColorId = color_id;
+                item.SizeId = size_id;
+                item.Quentity = quantity;
+                console.log(item);
+                ListColorSize.push(item);
+            });
+
+            //var ListColorSize = [];
+            //var colorSize = $("#table").children().eq(1).children().children();
+            
+            //for (let i = 0; i < colorSize.length; i += 3) {
+                
+            //    ListColorSize.push({
+                   
+            //        Quantity: colorSize.eq(i).text(), Size: colorSize.eq(i + 1).text(),
+            //        Color: colorSize.eq(i + 2).text()
+            //    })
+            //}
+            var fdata = new FormData();
+            
+                var indx=0
+            for (var list in ListColorSize) {
+                debugger;
+                fdata.append("ListColorSize[" + indx + "].Quantity", ListColorSize[indx].Quentity);
+                fdata.append("ListColorSize[" + indx + "].Size", ListColorSize[indx].SizeId);
+                fdata.append("ListColorSize[" + indx + "].Color", ListColorSize[indx].ColorId);
+                    indx++;
+                }
+            
+            //var i = 0;
+           
+            
+            fdata.append("ProductName", Name);
+            fdata.append("Price", price);
+            fdata.append("Quantity", Quantity);
+            fdata.append("SeasonId", season);
+            fdata.append("TypeId", type);
+            fdata.append("Code", code);
+            //fdata.append("ListColorSize", ListColorSize);
+            fdata.append("logoFile", file);
+            debugger;
+
+       
+            $.ajax({
+                type: 'Post',
+                url: "/Product/CreateProduct",
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                data: fdata ,
+            success: function (data) {
+             debugger;
+            
+            },
+             error: function () {
+                 debugger;
+
+             }
+
+             });
+        });
+
+    });
+</script>
+
+
+<h2>Create Product</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateProduct" asp-controller="Product" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductId" hidden></label>
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" id="ProductName"/>
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="Quantity" class="control-label "></label>
+                <input asp-for="Quantity" class="form-control" id="quantity"/>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" id="pricetxt"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="Code" class="control-label "></label>
+                <input asp-for="Code" class="form-control" id="Codetxt"/>
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeasonId" class="control-label ">Season</label>
+                <select asp-for="SeasonId" id="seasontxt" class="form-control" asp-items="@(new SelectList(Model.ListSeasons,"Id","Name"))"><option>--Select One--</option></select>
+            </div>
+            <div class="form-group col-lg-12" style="margin-left: 378px; margin-top: -86px">
+                <label asp-for="TypeId" class="control-label">Type Of Leather</label>
+                <select asp-for="TypeId" id="typetxt" class="form-control" asp-items="@(new SelectList(Model.ListTypeOfLeathers,"Id","TypeName"))"><option>--Select One--</option></select>
+            </div>
+
+            <div class="form-group ">
+                <label asp-for="image" class="control-label" for = "logoFile">Image</label>
+                <div class="custom-file" style="margin-left: 194px">
+                    <input id="logoFile" name="logoFile" class="form-control custom-file-input" for = "logoFile" type="file" />
+
+
+                    <label class="custom-file-label" for = "logoFile">Choose photo...</label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="form-group">
+
+                    <input value="@Model.ProductId" hidden />
+
+                    <div class="col-md-10">
+                        <input type="text" asp-for="QuantityColor" placeholder="Quantity" class="form-control" style="width:auto" id="txtquantity" />
+                        <select  id="txtcolor" asp-for="Color" class="form-control" asp-items="@(new SelectList(@ViewBag.Allcolr,"Id","ColorName"))" style="width:auto;margin-left: 205px;
+                    margin-top: -37px">
+                            <option value="">--Select color--</option>
+                        </select>
+
+                        <select id="txtsize" asp-for="Size" class="form-control"  asp-items="@(new SelectList(@ViewBag.AllSize,"Id","SizeNumber"))" style="width:auto;margin-left: 360px;
+                    margin-top: -38px">
+                            <option value="">--Select Size--</option>
+                        </select>
+
+                        <input type="button" value="Add" id="txtadd" class="btn btn-info" style="margin-left: 600px;
+                    margin-top: -61px" />
+                       
+                    </div>
+
+                </div>
+
+                <br />
+                <br />
+
+
+
+                <table class="table table-bordered table-striped table-hover" style="background-color:white" id="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Color)
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Size)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Quantity)
+
+                            </th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.ListColorSize != null)
+                        {
+                            @foreach (var item in Model.ListSizesColor)
+                            {
+                                <tr id="trrows">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Color.ColorName, new { @class = "custom-select" })
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Size.SizeNumber, new { @class = "custom-select" })
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quentity, new { @class = "custom-select" })
+
+                                    </td>
+
+                                    <td>
+
+                                        <button asp-action="EditSellerProfile" asp-controller="SellerAddress"
+                                                asp-route-obj=@Model asp-route-UserId="@item.Id" class="btn btn-primary">
+                                            Edit
+                                        </button>
+                                        <button asp-action="DeleteColorSize" asp-controller="Product" asp-route-Id="@item.Id" asp-route-ProductId="@item.ProductId" type="submit" class="btn btn-danger">Delete</button>
+
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <br />
+                <br />
+                <div class="form-group">
+                    <input type="button" id="createbtn" value="Create" class="btn btn-primary col-lg-6" style="margin-bottom: -120px; margin-left: 146px" />
+                    @*<a asp-action="ColorSizeProduct" class="btn btn-info" asp-route-id="@Model.ProductId">Add Color and Size</a>*@
+                    <a asp-action="ListProduct" class="btn btn-info col-lg-7" style="margin-bottom: -72px;margin-left: 315px">Back to List</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\bin\Debug\netcoreapp2.1\DataAcsses.deps.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\bin\Debug\netcoreapp2.1\DataAcsses.runtimeconfig.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\bin\Debug\netcoreapp2.1\DataAcsses.runtimeconfig.dev.json
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\bin\Debug\netcoreapp2.1\DataAcsses.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\bin\Debug\netcoreapp2.1\DataAcsses.pdb
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\obj\Debug\netcoreapp2.1\DataAcsses.csproj.CoreCompileInputs.cache
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\obj\Debug\netcoreapp2.1\DataAcsses.AssemblyInfoInputs.cache
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\obj\Debug\netcoreapp2.1\DataAcsses.AssemblyInfo.cs
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\obj\Debug\netcoreapp2.1\DataAcsses.dll
+C:\Users\rahaf\Source\Workspaces\OnlineShoping_Rahf\DataAcsses\obj\Debug\netcoreapp2.1\DataAcsses.pdb

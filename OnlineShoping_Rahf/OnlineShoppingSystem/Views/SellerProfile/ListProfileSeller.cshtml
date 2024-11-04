@@ -1,0 +1,41 @@
+﻿
+@model OnlineShoppingSystem.Models.DTOOnlineShopping.EditProfileSellerDTO
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Seller Profile";
+}
+
+<h1>Seller Profile</h1>
+@*@if (Model.Any())
+    {
+        foreach (var user in Model)
+        {*@
+<div class="card mb-3">
+    <div class="card-header">
+        userId:@Model.Id
+    </div>
+    @if (Model.Image != null)
+    {
+        <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Image)" width="150" height="100" />
+
+    }
+
+</div>
+    <div class="card-body">
+        User Name:   <h5 class="card-title">@Model.UserName</h5>
+        <br />
+        Phone:   <h5 class="card-title">@Model.phone</h5>
+        <br />
+        Email:   <h5 class="card-title">@Model.Email</h5>
+    </div>
+    <div class="card-footer">
+        <a asp-action="EditProfileSeeler" asp-controller="SellerProfile"
+           asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+
+    </div>
+</div>
+@*}
+    }*@
+

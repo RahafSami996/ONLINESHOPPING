@@ -1,0 +1,78 @@
+﻿@*@model IEnumerable<IdentityRole>
+@using Microsoft.AspNetCore.Identity*@
+@model IEnumerable<OnlineShoppingSystem.Models.ApplicationRole>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ALl Roles";
+}
+
+<h1>All Roles</h1>
+
+@if (Model.Any())
+{
+    <a asp-controller="Administration" asp-action="CreateRole"
+       class="btn btn-primary mb-3" style="width:auto">
+        Add New Role
+    </a>
+
+    <table class="table table-bordered table-striped table-hover" style="color:darkviolet">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>OPtions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="EditRole" asp-controller="Administration"
+                           asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+
+                        <a asp-action="DeleteRole" asp-controller="Administration"
+                           asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No Role Crated Yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use The button below to create a Role
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Administration" asp-action="CreateRole">
+                Add new Role
+            </a>
+        </div>
+
+    </div>
+}
+@section Scripts {
+    <partial name="_Validation" />
+}
+

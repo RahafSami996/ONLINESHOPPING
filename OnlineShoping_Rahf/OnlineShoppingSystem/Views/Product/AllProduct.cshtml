@@ -1,0 +1,97 @@
+﻿@model OnlineShoppingSystem.Models.DTOOnlineShopping.ProductDTO
+@{
+    ViewData["Title"] = "AllProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllProduct</h2>
+
+@if (Model != null)
+{
+    <form asp-action="AllProduct">
+        <div class="row">
+
+
+            @foreach (var item in Model.Listproduct)
+            {
+                <div class="col-md-4" style="margin-bottom: 83px;margin-top: 50px" id="div">
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                        </div>
+                        @if (item.ListOfImage != null)
+                        {
+                            @foreach (var item2 in item.ListOfImage)
+                            {
+                                <img src="data:'@item2.ContentType';base64,@Convert.ToBase64String(item2.Data)" onclick="imagebtn(@item.Id)" class="card-img-top" style="width:348px;height:348px" />
+
+                            }
+                        }
+
+                        <div class="card-header form-group">
+                            <h3 style="background:red">Price:$ @Html.DisplayFor(modelItem => item.Price)</h3>
+                            @*<a  asp-action="CartProduct"  asp-rote-Id="@item.Id">Add to Basket</a>*@
+
+                            <input type="submit" asp-action="AllProduct" asp-route-Id="@item.Id" value="Add To Basket" />
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+
+
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalis</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body" id="modalbody">
+
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+
+}
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.js"></script>
+<script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+      function imagebtn(Id) {
+            debugger;
+
+            $.ajax({
+                type: 'get',
+                url: '@Url.Action("popupModal/id", "Product")'.replace("id", Id),
+                data: {},
+                success: function (data) {
+                    debugger;
+                    $("#modalbody").html(data);
+                    $("#exampleModal").modal('show');
+                },
+                error: function () {
+                    debugger;
+
+                }
+
+            });
+        }
+
+</script>
